@@ -1,0 +1,218 @@
+/* ── Design tokens ─────────────────────────────────────────────────────── */
+:root {
+  --bg:          #F5F2EC;
+  --surface:     #FFFFFF;
+  --ink:         #0A0A0A;
+  --ink-muted:   #5A5A5A;
+  --coral:       #FF3B30;
+  --cyan:        #00D4FF;
+  --yellow:      #FFE600;
+  --green:       #00C853;
+  --border:      #0A0A0A;
+  --border-thin: rgba(10,10,10,0.15);
+
+  --shadow-sm: 4px 4px 0px #0A0A0A;
+  --shadow-md: 6px 6px 0px #0A0A0A;
+  --shadow-lg: 8px 8px 0px #0A0A0A;
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+  --font-serif:   'Instrument Serif', serif;
+}
+
+/* ── Reset ─────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* ── Brutalist card ─────────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 0;
+  box-shadow: var(--shadow-sm);
+}
+.card-lg {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 0;
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Badges ─────────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border: 2px solid var(--border);
+  border-radius: 0;
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.badge-flagged  { background: var(--coral); color: #fff; }
+.badge-cleared  { background: var(--green); color: var(--ink); }
+.badge-pending  { background: var(--yellow); color: var(--ink); }
+.badge-approved { background: var(--cyan); color: var(--ink); }
+.badge-rejected { background: var(--ink); color: #fff; }
+.badge-pending_review { background: var(--yellow); color: var(--ink); }
+
+.badge-critical { background: var(--coral); color: #fff; }
+.badge-high     { background: var(--coral); color: #fff; }
+.badge-medium   { background: var(--yellow); color: var(--ink); }
+.badge-low      { background: var(--green); color: var(--ink); }
+
+/* ── Brutalist button ───────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border: 2px solid var(--border);
+  border-radius: 0;
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-display);
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s, box-shadow 0.1s, transform 0.1s;
+  text-transform: uppercase;
+}
+.btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--border); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+.btn-black  { background: var(--ink); color: #fff; }
+.btn-black:hover:not(:disabled) { background: var(--yellow); color: var(--ink); }
+
+.btn-approve { background: var(--ink); color: #fff; border-color: var(--ink); }
+.btn-approve:hover:not(:disabled) { background: var(--green); color: var(--ink); border-color: var(--ink); }
+
+.btn-reject  { background: var(--surface); color: var(--coral); border: 2px solid var(--coral); }
+.btn-reject:hover:not(:disabled) { background: var(--coral); color: #fff; }
+
+/* ── Agent pipeline node states ─────────────────────────────────────────── */
+.pipe-node {
+  width: 120px;
+  min-height: 64px;
+  border: 2px solid var(--border);
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 8px;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.pipe-node-idle      { background: var(--surface); color: var(--ink-muted); }
+.pipe-node-running   { background: var(--yellow); color: var(--ink); animation: pulse-border 0.5s infinite alternate; }
+.pipe-node-completed { background: var(--ink); color: #fff; border-left: 4px solid var(--cyan); }
+.pipe-node-failed    { background: var(--coral); color: #fff; }
+.pipe-node-skipped   { background: var(--surface); color: var(--border-thin); }
+
+@keyframes pulse-border {
+  from { border-color: var(--ink); }
+  to   { border-color: var(--coral); }
+}
+
+/* ── Agent output header bars ───────────────────────────────────────────── */
+.agent-header {
+  background: var(--ink);
+  color: #fff;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+}
+
+/* ── Flag pill ─────────────────────────────────────────────────────────── */
+.flag-pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border: 2px solid var(--border);
+  border-radius: 0;
+  background: var(--yellow);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+/* ── Recommended action box ─────────────────────────────────────────────── */
+.action-box {
+  background: var(--yellow);
+  border: 2px solid var(--border);
+  border-radius: 0;
+  padding: 12px 16px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+/* ── Stagger-in animation ───────────────────────────────────────────────── */
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+@keyframes slideInLeft {
+  from { transform: translateX(-20px); opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+@keyframes greenFlash {
+  0%   { background: var(--surface); }
+  40%  { background: #b9f5d8; }
+  100% { background: var(--surface); }
+}
+
+.stagger > * {
+  animation: slideUp 0.3s ease both;
+}
+.stagger > *:nth-child(1) { animation-delay: 0.00s; }
+.stagger > *:nth-child(2) { animation-delay: 0.05s; }
+.stagger > *:nth-child(3) { animation-delay: 0.10s; }
+.stagger > *:nth-child(4) { animation-delay: 0.15s; }
+.stagger > *:nth-child(5) { animation-delay: 0.20s; }
+.stagger > *:nth-child(6) { animation-delay: 0.25s; }
+.stagger > *:nth-child(7) { animation-delay: 0.30s; }
+.stagger > *:nth-child(8) { animation-delay: 0.35s; }
+
+/* ── Spinner ─────────────────────────────────────────────────────────────── */
+.spinner {
+  width: 16px; height: 16px;
+  border: 2px solid var(--border-thin);
+  border-top-color: var(--ink);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  display: inline-block;
+  flex-shrink: 0;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Overlay ─────────────────────────────────────────────────────────────── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,10,10,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-thin); }

@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir \"c:\\\\Users\\\\Kabira\\\\OneDrive\\\\Desktop\\\\TradeGuard AI\\\\backend\")",
+      "Bash(mkdir \"c:\\\\Users\\\\Kabira\\\\OneDrive\\\\Desktop\\\\TradeGuard AI\\\\frontend\")",
+      "Bash(npm create *)",
+      "Bash(npm install *)",
+      "Bash(pip install *)",
+      "Bash(python -c \"import main; print\\('main.py OK'\\)\")",
+      "Bash(npx vite *)",
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\Kabira\\\\OneDrive\\\\Desktop\\\\TradeGuard AI\" -Recurse | Where-Object { -not $_.PSIsContainer } | Select-Object -ExpandProperty FullName | ForEach-Object { $_.Replace\\(\"c:\\\\Users\\\\Kabira\\\\OneDrive\\\\Desktop\\\\TradeGuard AI\\\\\", \"\"\\) } | Where-Object { $_ -notmatch \"node_modules|dist|__pycache__|\\\\.git\" })",
+      "Bash(python -c \"import main; print\\('OK'\\)\")",
+      "Bash(python -c \"import orchestrator; print\\('OK'\\)\")"
+    ]
+  }
+}
