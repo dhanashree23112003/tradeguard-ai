@@ -1,4 +1,4 @@
-                                                              # TradeGuard AI
+# TradeGuard AI
 
 A full-stack multi-agent AI compliance monitoring system that detects suspicious trading activity, maps regulatory violations, and generates formal compliance reports — with a human-in-the-loop approval step.
 
